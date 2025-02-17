@@ -22,28 +22,24 @@ class PlayerView:
         self.directional_np.setHpr(0, -60, 0)
         base.render.setLight(self.directional_np)
 
-        # Create background
         self.create_background()
 
         pub.subscribe(self.toggle_light, 'input')
         pub.subscribe(self.new_game_object, 'create')
 
     def create_background(self):
-        # Create a large background card (large enough to be visible behind the scene)
         card_maker = CardMaker("background_card")
-        card_maker.setFrame(50, 50, 50, 50)  # Size of the background
+        card_maker.setFrame(-30, 30, -30, 30)  # Size of the background
         background_card = base.render.attachNewNode(card_maker.generate())
 
         # Load texture for the background
-        background_texture = base.loader.loadTexture("textures/sky.png")  # Replace with actual texture path
+        background_texture = base.loader.loadTexture("textures/sky.png")
         background_card.setTexture(background_texture)
 
-        # Position the background behind the scene
-        background_card.setPos(0, -20, 0)  # Place it far enough back in the scene
+        background_card.setPos(0, 20, 0)
 
-        # Ensure it's rendered last, behind all objects
         background_card.setBin("background", 0)
-        background_card.setDepthWrite(False)  # Disable depth writing to avoid clipping issues
+        background_card.setDepthWrite(False)
 
     def new_game_object(self, game_object):
         if game_object.kind == "player":
