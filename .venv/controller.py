@@ -9,9 +9,6 @@ from pubsub import pub
 from game_logic import GameLogic
 from player_view import PlayerView
 
-#Need to put in the toggleLight and assign it to 'E'
-#Need to put in my background
-
 controls = {
     'w': 'forward',
     'a': 'left',

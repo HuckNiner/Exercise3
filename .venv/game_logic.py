@@ -27,10 +27,19 @@ class GameLogic:
         return obj
 
     def load_world(self):
+        #Bottom Layer
         self.create_object([0, 0, 0], "crate")
         self.create_object([-3, 0, 0], "crate")
         self.create_object([3, 0, 0], "crate")
-        self.create_object([0, -10, 0], "player")
+
+        #Middle Layer
+        self.create_object([-1.5, 0, 2], "crate")
+        self.create_object([1.5, 0, 2], "crate")
+        #Top Layer
+        self.create_object([0, 0, 4], "crate")
+
+        #Player
+        self.create_object([0, -15, 0], "player")
 
     def get_property(self, key):
         if key in self.properties:
